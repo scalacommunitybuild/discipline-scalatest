@@ -36,6 +36,10 @@ lazy val root = project
     scalatestNative
   )
 
+val isDotty = Def.setting(
+  CrossVersion.partialVersion(scalaVersion.value).exists(_._1 == 3)
+)
+
 lazy val scalatest = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .crossType(CrossType.Pure)
   .in(file("scalatest"))
